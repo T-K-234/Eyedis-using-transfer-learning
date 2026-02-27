@@ -171,6 +171,4 @@ The models were evaluated using standard classification metrics:
 
 **Tharun Kumar**
 
----
 
-If you want, I can also help you add **GitHub badges, model accuracy tables, and architecture diagrams** so your README looks **like a top-tier ML project (very good for placements and GitHub portfolio).**
