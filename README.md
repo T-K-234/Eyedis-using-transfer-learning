@@ -1,32 +1,47 @@
-# Eye Disease Detection using Transfer Learning
+
+# AI-Based Eye Disease Classification System with Report Summarization
 
 ## Project Overview
 
-This repository contains an **Eye Disease Detection system built using deep learning models such as ResNet-18, Swin Transformer, and Convolutional Neural Networks (CNN)**.
+This project presents a **Flask-based web application for automated eye disease classification using retinal images**. The system uses **deep learning and ensemble learning techniques** to classify eye diseases and generate a summarized diagnostic report for users.
 
-The system classifies **retinal images** to detect common eye diseases. Early detection of these diseases can help doctors begin treatment early and prevent serious vision loss.
+The application allows users to **upload retinal images through a web interface**, after which the trained deep learning models analyze the image and predict the disease category.
 
-The project uses **transfer learning and deep learning techniques** to improve the accuracy of disease classification.
+The system supports **multiclass classification** and can identify multiple eye diseases such as **Diabetic Retinopathy, Glaucoma, Cataract, and Healthy Eyes**.
+
+Additionally, the application generates a **short medical report summarizing the prediction and basic disease information**, making it easier for users to understand the results.
 
 ---
 
 # Introduction
 
-Eye diseases such as **Diabetic Retinopathy, Glaucoma, and Cataract** are major causes of vision impairment worldwide. Manual diagnosis requires expert ophthalmologists and can be time-consuming.
+Eye diseases are one of the major causes of vision impairment worldwide. Early diagnosis plays a crucial role in preventing severe vision loss. However, traditional diagnosis requires expert ophthalmologists and specialized medical equipment.
 
-This project aims to build an **AI-based automated system** that can analyze retinal images and classify them into disease categories using deep learning.
+With advancements in **deep learning and computer vision**, retinal image analysis can be automated to assist medical professionals in diagnosing diseases quickly and accurately.
 
-By using **transfer learning models trained on large datasets**, the system can effectively detect patterns in retinal images.
+This project integrates **multiple deep learning models through ensemble learning** to improve classification performance. The final system is deployed as a **Flask web application**, making it accessible and easy to use.
+
+---
+
+# Key Features
+
+• Multiclass eye disease classification
+• Ensemble learning for improved accuracy
+• Upload retinal images through a web interface
+• Automatic prediction of eye disease type
+• Report summarization explaining the prediction
+• Flask-based backend for model inference
+• Simple and user-friendly interface
 
 ---
 
 # Dataset
 
-The dataset used in this project contains retinal images belonging to different disease categories.
-
-**Source:** Kaggle
+The model was trained on a dataset of retinal fundus images collected from Kaggle.
 
 ### Classes
+
+The dataset contains four classes:
 
 * Healthy
 * Diabetic Retinopathy
@@ -35,136 +50,166 @@ The dataset used in this project contains retinal images belonging to different 
 
 ### Dataset Size
 
-| Dataset  | Number of Images |
-| -------- | ---------------- |
-| Training | 3,372            |
-| Testing  | 845              |
-
-The images were preprocessed before training.
-
-### Preprocessing Steps
-
-* Image resizing
-* Normalization
-* Data augmentation (rotation, flipping, zooming)
-
-These steps help improve model performance and prevent overfitting.
+| Dataset  | Images |
+| -------- | ------ |
+| Training | 3,372  |
+| Testing  | 845    |
 
 ---
 
-# Model Architectures
+# Data Preprocessing
 
-## 1. ResNet-18
+Before training the models, the retinal images were preprocessed to improve model performance.
 
-ResNet-18 is a deep convolutional neural network that uses **residual connections** to allow training of deeper networks without vanishing gradient problems.
+### Preprocessing Techniques
 
-### Key Features
+• Image resizing to fixed dimensions
+• Pixel normalization
+• Data augmentation (rotation, flipping, zooming)
+• Noise reduction and image enhancement
 
-* 18 convolutional layers
-* Residual skip connections
-* Efficient training for deep networks
-
----
-
-## 2. Swin Transformer
-
-Swin Transformer is a **Vision Transformer architecture** that processes images using **shifted window self-attention mechanisms**.
-
-It is designed to capture both **local and global image features**, which improves performance in image classification tasks.
-
-### Key Features
-
-* Hierarchical transformer architecture
-* Shifted window attention
-* Efficient computation for high-resolution images
+These preprocessing steps help the model learn better features from the retinal images.
 
 ---
 
-## 3. Convolutional Neural Network (CNN)
+# Deep Learning Models
 
-A custom CNN architecture was implemented to learn spatial patterns from retinal images.
+The system uses **multiple deep learning models**, whose predictions are combined using **ensemble learning**.
 
-### Key Features
+## 1. Convolutional Neural Network (CNN)
 
-* Convolution layers for feature extraction
-* Pooling layers for dimensionality reduction
-* Fully connected layers for classification
+A custom CNN architecture was used to learn spatial features from retinal images.
+
+Key characteristics:
+
+• Multiple convolution layers
+• ReLU activation functions
+• Max pooling layers
+• Fully connected classification layer
+
+CNN helps capture **local patterns such as lesions, blood vessels, and abnormal structures**.
+
+---
+
+## 2. ResNet-18
+
+ResNet-18 is a deep convolutional neural network that uses **residual connections** to prevent vanishing gradients and allow deeper architectures.
+
+Key characteristics:
+
+• 18-layer deep architecture
+• Residual skip connections
+• Transfer learning using ImageNet weights
+
+ResNet helps in learning **complex hierarchical features from retinal images**.
+
+---
+
+## 3. Swin Transformer
+
+Swin Transformer is a **Vision Transformer architecture** designed for image classification tasks.
+
+Key characteristics:
+
+• Shifted window self-attention
+• Hierarchical feature representation
+• Efficient computation for high-resolution images
+
+It captures **global relationships between image patches**, which improves classification performance.
+
+---
+
+# Ensemble Learning
+
+Instead of relying on a single model, this project uses **ensemble learning**.
+
+### How Ensemble Learning Works
+
+1. Each model (CNN, ResNet-18, Swin Transformer) makes its own prediction.
+2. The predictions are combined using **majority voting or probability averaging**.
+3. The final predicted class is selected based on the combined output.
+
+### Advantages of Ensemble Learning
+
+• Higher accuracy
+• Better generalization
+• Reduced overfitting
+• More robust predictions
+
+---
+
+# Web Application (Flask Integration)
+
+The trained models are integrated into a **Flask web application** that allows users to interact with the system easily.
+
+### Workflow
+
+1. User uploads a retinal image through the web interface.
+2. The image is preprocessed.
+3. The ensemble model predicts the disease class.
+4. The system generates a **summary report** explaining the prediction.
+5. The result is displayed on the webpage.
+
+---
+
+# Report Summarization
+
+After classification, the system generates a **short textual summary describing the detected disease**.
+
+Example Output:
+
+Prediction: **Diabetic Retinopathy**
+
+Summary:
+Diabetic Retinopathy is a complication caused by diabetes that affects the blood vessels of the retina. Early detection and regular monitoring are essential to prevent vision loss. It is recommended to consult an ophthalmologist for further evaluation.
+
+This feature helps **users better understand the prediction results**.
 
 ---
 
 # Training Configuration
 
-| Parameter       | Value              |
-| --------------- | ------------------ |
-| Optimizer       | Adam               |
-| Learning Rate   | 0.001              |
-| Batch Size      | 32                 |
-| Loss Function   | Cross Entropy Loss |
-| Training Method | Transfer Learning  |
+| Parameter           | Value         |
+| ------------------- | ------------- |
+| Optimizer           | Adam          |
+| Learning Rate       | 0.001         |
+| Batch Size          | 32            |
+| Loss Function       | Cross Entropy |
+| Classification Type | Multiclass    |
 
 ---
-
-# Training Process
-
-### 1. Data Preprocessing
-
-Images were resized and normalized before training. Data augmentation was applied to increase dataset diversity.
-
-### 2. Model Initialization
-
-Pretrained weights from **ImageNet** were used to initialize the models.
-
-### 3. Model Training
-
-The models were trained using GPU acceleration with the **Adam optimizer**.
-
-### 4. Model Evaluation
-
-The trained models were evaluated on the **test dataset** to measure classification performance.
-
----
-
-# Results
-
-The models were evaluated using standard classification metrics:
-
-* Accuracy
-* Precision
-* Recall
-* F1 Score
-
 
 # Applications
 
-* Early detection of eye diseases
-* AI-assisted medical diagnosis
-* Clinical decision support systems
-* Telemedicine applications
+• Early screening of eye diseases
+• AI-assisted medical diagnosis
+• Telemedicine and remote healthcare
+• Clinical decision support systems
+• Automated retinal image analysis
 
 ---
 
 # Future Improvements
 
-* Ensemble learning to combine multiple model predictions
-* Integration with a web-based interface
-* Deployment using Flask or Streamlit
-* Expanding the dataset for improved generalization
+• Deploy the system on cloud platforms
+• Add more eye disease categories
+• Improve model accuracy with larger datasets
+• Integrate real-time hospital data systems
+• Build a mobile application for disease detection
 
 ---
 
-# Requirements
+# Technologies Used
 
-* Python 3.8+
-* PyTorch
-* torchvision
-* NumPy
-* OpenCV
-* Matplotlib
+• Python
+• PyTorch
+• Flask
+• OpenCV
+• NumPy
+• Matplotlib
 
 ---
 
 # Author
 
 **Tharun Kumar**
-
-
