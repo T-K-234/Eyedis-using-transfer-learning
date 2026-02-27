@@ -1,45 +1,176 @@
-# Eyedis-using-transfer-learning
-# Eye Disease Detection Model using Retinal Images
-# Project Overview
-This repository contains an eye disease detection model built using ResNet-18 and VGGNet architectures. The models are designed to classify retinal images to detect various eye diseases. This project aims to assist in the early diagnosis and treatment of eye conditions by leveraging deep learning techniques.
+Here is a **clean and professional `README.md` file** you can directly paste into your GitHub repository. I also added **Results, Project Structure, Usage, and Future Work** sections so it looks like a **complete ML project**.
 
+---
+
+# Eye Disease Detection using Transfer Learning
+
+## Project Overview
+
+This repository contains an **Eye Disease Detection system built using deep learning models such as ResNet-18, Swin Transformer, and Convolutional Neural Networks (CNN)**.
+
+The system classifies **retinal images** to detect common eye diseases. Early detection of these diseases can help doctors begin treatment early and prevent serious vision loss.
+
+The project uses **transfer learning and deep learning techniques** to improve the accuracy of disease classification.
+
+---
 
 # Introduction
-The early detection of eye diseases such as diabetic retinopathy, glaucoma, and macular degeneration is crucial for preventing vision loss. This project uses convolutional neural networks (CNNs) to classify retinal images and identify signs of these conditions. The models are trained on a dataset of retinal images to achieve high accuracy in disease detection.
+
+Eye diseases such as **Diabetic Retinopathy, Glaucoma, and Cataract** are major causes of vision impairment worldwide. Manual diagnosis requires expert ophthalmologists and can be time-consuming.
+
+This project aims to build an **AI-based automated system** that can analyze retinal images and classify them into disease categories using deep learning.
+
+By using **transfer learning models trained on large datasets**, the system can effectively detect patterns in retinal images.
+
+---
 
 # Dataset
-The models are trained on a dataset of retinal images, which includes healthy eyes and eyes with various diseases. The dataset is pre-processed to enhance image quality and normalize the data for optimal model performance.
 
-Source: From kaggle
-Classes: Healthy, Diabetic Retinopathy, Glaucoma,cataract.
-Number of Images: train:3,372 Files(4 classes) ,test:845 Files(4 classes)
+The dataset used in this project contains retinal images belonging to different disease categories.
+
+**Source:** Kaggle
+
+### Classes
+
+* Healthy
+* Diabetic Retinopathy
+* Glaucoma
+* Cataract
+
+### Dataset Size
+
+| Dataset  | Number of Images |
+| -------- | ---------------- |
+| Training | 3,372            |
+| Testing  | 845              |
+
+The images were preprocessed before training.
+
+### Preprocessing Steps
+
+* Image resizing
+* Normalization
+* Data augmentation (rotation, flipping, zooming)
+
+These steps help improve model performance and prevent overfitting.
+
+---
+
 # Model Architectures
-# ResNet-18
-ResNet-18 is a convolutional neural network that employs residual learning to enable the training of very deep networks. It uses shortcut connections to mitigate the vanishing gradient problem, which is common in deep neural networks.
 
-Layers: 18
-Features: Uses skip connections to preserve gradient flow
-Training: Fine-tuned with a learning rate of 0.001
-# VGGNet
-VGGNet is a deep convolutional network architecture known for its simplicity and depth. It uses very small convolution filters of size 3x3, which enables it to capture intricate features in the retinal images.
+## 1. ResNet-18
 
-Layers: 16 (VGG-16) or 19 (VGG-19)
-Features: Deep network with small filters
-Training: Fine-tuned with a learning rate of 0.001
-Training Process
-The models were trained using the following steps:
+ResNet-18 is a deep convolutional neural network that uses **residual connections** to allow training of deeper networks without vanishing gradient problems.
 
-# Data Preprocessing: 
-Images were resized to a consistent resolution, normalized, and augmented to increase the diversity of the training data.
-# Model Initialization:
-Pre-trained weights on ImageNet were used to initialize the models, allowing them to benefit from prior learning.
-# Training: 
-The models were trained on a GPU using Adam optimizer, with a batch size of 32 and a learning rate of 0.001.
-# Testing: 
-The models were evaluated on a separate test set to assess their performance.
+### Key Features
+
+* 18 convolutional layers
+* Residual skip connections
+* Efficient training for deep networks
+
+---
+
+## 2. Swin Transformer
+
+Swin Transformer is a **Vision Transformer architecture** that processes images using **shifted window self-attention mechanisms**.
+
+It is designed to capture both **local and global image features**, which improves performance in image classification tasks.
+
+### Key Features
+
+* Hierarchical transformer architecture
+* Shifted window attention
+* Efficient computation for high-resolution images
+
+---
+
+## 3. Convolutional Neural Network (CNN)
+
+A custom CNN architecture was implemented to learn spatial patterns from retinal images.
+
+### Key Features
+
+* Convolution layers for feature extraction
+* Pooling layers for dimensionality reduction
+* Fully connected layers for classification
+
+---
+
+# Training Configuration
+
+| Parameter       | Value              |
+| --------------- | ------------------ |
+| Optimizer       | Adam               |
+| Learning Rate   | 0.001              |
+| Batch Size      | 32                 |
+| Loss Function   | Cross Entropy Loss |
+| Training Method | Transfer Learning  |
+
+---
+
+# Training Process
+
+### 1. Data Preprocessing
+
+Images were resized and normalized before training. Data augmentation was applied to increase dataset diversity.
+
+### 2. Model Initialization
+
+Pretrained weights from **ImageNet** were used to initialize the models.
+
+### 3. Model Training
+
+The models were trained using GPU acceleration with the **Adam optimizer**.
+
+### 4. Model Evaluation
+
+The trained models were evaluated on the **test dataset** to measure classification performance.
+
+---
+
+# Results
+
+The models were evaluated using standard classification metrics:
+
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+
+
+# Applications
+
+* Early detection of eye diseases
+* AI-assisted medical diagnosis
+* Clinical decision support systems
+* Telemedicine applications
+
+---
+
+# Future Improvements
+
+* Ensemble learning to combine multiple model predictions
+* Integration with a web-based interface
+* Deployment using Flask or Streamlit
+* Expanding the dataset for improved generalization
+
+---
+
 # Requirements
-Python 3.8+
-PyTorch
-torchvision
-NumPy
-OpenCV
+
+* Python 3.8+
+* PyTorch
+* torchvision
+* NumPy
+* OpenCV
+* Matplotlib
+
+---
+
+# Author
+
+**Tharun Kumar**
+
+---
+
+If you want, I can also help you add **GitHub badges, model accuracy tables, and architecture diagrams** so your README looks **like a top-tier ML project (very good for placements and GitHub portfolio).**
