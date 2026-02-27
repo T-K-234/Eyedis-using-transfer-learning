@@ -1,7 +1,3 @@
-Here is a **clean and professional `README.md` file** you can directly paste into your GitHub repository. I also added **Results, Project Structure, Usage, and Future Work** sections so it looks like a **complete ML project**.
-
----
-
 # Eye Disease Detection using Transfer Learning
 
 ## Project Overview
